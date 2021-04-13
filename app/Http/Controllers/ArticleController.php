@@ -23,7 +23,7 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
         return view('articles.create');
     }
@@ -36,6 +36,8 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
+        $image_name = '';
+        
         if ($request->file('image')){
             $image_name = $request->file('image')->store('images', 'public');
         }
@@ -43,7 +45,7 @@ class ArticleController extends Controller
         Article::create([
             'title' => $request->title,
             'content' => $request->content,
-            'featured_image' => $request->image_name,
+            'featured_image' => $image_name
         ]);
         return 'Artikel berhasil disimpan';
     }
