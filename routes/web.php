@@ -14,6 +14,7 @@ use App\Http\Controllers\ArticleController;
 |
 */
 Route::resource('articles', ArticleController::class);
+Route::get('/article/cetak_pdf', ['articles'=>$articles]);
 
 Route::get('/', function () {
     return view('welcome');
