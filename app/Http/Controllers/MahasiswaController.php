@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mahasiswa;
 use App\Models\Kelas; 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MahasiswaController extends Controller
 {
@@ -113,6 +114,7 @@ class MahasiswaController extends Controller
          $request->validate([
             'Nim' => 'required',
             'Nama' => 'required',
+            'foto' => 'file|image|mimes:jpeg,png,jpg',
             'Kelas' => 'required',
             'Jurusan' => 'required',
             // 'tanggalLahir' => 'required',
@@ -128,6 +130,15 @@ class MahasiswaController extends Controller
 
         $kelas = new Kelas;
         $kelas->id = $request->get('Kelas');
+
+        if ($mahasiswa->foto && file_exists(storage_path('app/public/' . $mahasiswa->foto))) {
+            Storage::delete('public/' . $mahasiswa->foto);
+        }
+
+        if ($request->file('foto') != null) {
+            $image_name = $request->file('foto')->store('images', 'public');
+            $mahasiswa->foto = $image_name;
+        }
 
          //fungsi eloquent untuk menambah data dengan relasi belongTo
          $mahasiswa->kelas()->associate($kelas);
