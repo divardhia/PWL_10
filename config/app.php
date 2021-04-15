@@ -162,6 +162,9 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+         // tambah pdf
+         Barryvdh\DomPDF\ServiceProvider::class,
+         
         /*
          * Package Service Providers...
          */
@@ -174,6 +177,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+       
 
     ],
 
@@ -228,6 +233,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        // tambah pdf
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];
