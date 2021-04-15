@@ -30,5 +30,8 @@
 
             </tbody>
         </table>
+        <div class="row justify-content-center align-items-center">
+            <a class="btn btn-danger" href="/mahasiswa/nilai/cetak_khs/{{$mahasiswa->Nim}}">Cetak Ke PDF</a>
+        </div>
     </div>
 @endsection

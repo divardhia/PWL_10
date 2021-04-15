@@ -1,22 +1,30 @@
 @extends('layout')
-
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center align-items-center">
-            <h2 style="margin-bottom: 50px;">JURUSAN TEKNOLOGI INFORMASI-POLITEKNIK NEGERI MALANG</h2>
-            <h1 style="margin-bottom: 50px">KARTU HASIL STUDI (KHS)</h1>
-        </div>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+    <style>
+        h1, h2{
+            margin-bottom: 50px;
+        }
+    </style>
+        <center>
+            <h2>JURUSAN TEKNOLOGI INFORMASI-POLITEKNIK NEGERI MALANG</h2>
+            <h1>KARTU HASIL STUDI (KHS)</h1>
+        </center>
         <p>
             <b>Nama:</b> {{ $mahasiswa->Nama }} <br>
             <b>NIM:</b> {{ $mahasiswa->Nim }} <br>
-            <b>Kelas:</b> {{ $mahasiswa->kelas->nama_kelas }} <br><br>
+            <b>Kelas:</b> {{ $mahasiswa->Kelas->nama_kelas }} <br><br>
         </p>
         <table class="table table-bordered">
             <thead>
-                <th>Matakuliah</th>
-                <th>SKS</th>
-                <th>Semester</th>
-                <th>Nilai</th>
+                <tr>
+                    <th>Matakuliah</th>
+                    <th>SKS</th>
+                    <th>Semester</th>
+                    <th>Nilai</th>
+                </tr>
             </thead>
             <tbody>
                 @foreach ($mahasiswa->matakuliah as $item)
@@ -27,11 +35,6 @@
                         <td>{{ $item->pivot->nilai }}</td>
                 @endforeach
                 </tr>
-
             </tbody>
         </table>
-        <div class="row justify-content-center align-items-center">
-            <a class="btn btn-danger" href="/mahasiswa/nilai/cetak_khs/{{$mahasiswa->Nim}}">Cetak Ke PDF</a>
-        </div>
-    </div>
 @endsection
