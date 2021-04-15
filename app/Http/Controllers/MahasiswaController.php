@@ -43,6 +43,7 @@ class MahasiswaController extends Controller
          $request->validate([
             'Nim' => 'required',
             'Nama' => 'required',
+            'foto' => 'required|file|image|mimes:jpeg,png,jpg',
             'Kelas' => 'required',
             'Jurusan' => 'required',
             // 'tanggalLahir' => 'required',
@@ -56,11 +57,16 @@ class MahasiswaController extends Controller
         $mahasiswa->jurusan = $request->get('Jurusan');
         $mahasiswa->save();
 
+        if ($request->file('foto')) {
+            $image_name = $request->file('foto')->store('images', 'public');
+        }
+
         $kelas = new Kelas;
         $kelas->id = $request->get('Kelas');
 
         //fungsi eloquent untuk menambah data dengan relasi belongTo
         $mahasiswa->kelas()->associate($kelas);
+        $mahasiswa->foto = $image_name;
         $mahasiswa->save();
         //jika data berhasil ditambahkan, akan kembali ke halaman utama
         return redirect()->route('mahasiswa.index')
