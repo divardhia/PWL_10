@@ -6,7 +6,7 @@ use App\Models\Mahasiswa;
 use App\Models\Kelas; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Barryvdh\DomPDF\PDF;
+use PDF;
 
 class MahasiswaController extends Controller
 {

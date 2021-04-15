@@ -7,6 +7,10 @@
         h1, h2{
             margin-bottom: 50px;
         }
+        .table{
+            justify-content: center;
+            align-items: center;
+        }
     </style>
         <center>
             <h2>JURUSAN TEKNOLOGI INFORMASI-POLITEKNIK NEGERI MALANG</h2>
@@ -17,24 +21,26 @@
             <b>NIM:</b> {{ $mahasiswa->Nim }} <br>
             <b>Kelas:</b> {{ $mahasiswa->Kelas->nama_kelas }} <br><br>
         </p>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Matakuliah</th>
-                    <th>SKS</th>
-                    <th>Semester</th>
-                    <th>Nilai</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($mahasiswa->matakuliah as $item)
+            <table class="table table-bordered">
+                <thead>
                     <tr>
-                        <td>{{ $item->nama_matkul }}</td>
-                        <td>{{ $item->sks }}</td>
-                        <td>{{ $item->semester }}</td>
-                        <td>{{ $item->pivot->nilai }}</td>
-                @endforeach
-                </tr>
-            </tbody>
-        </table>
+                        <th>Matakuliah</th>
+                        <th>SKS</th>
+                        <th>Semester</th>
+                        <th>Nilai</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($mahasiswa->matakuliah as $item)
+                        <tr>
+                            <td>{{ $item->nama_matkul }}</td>
+                            <td>{{ $item->sks }}</td>
+                            <td>{{ $item->semester }}</td>
+                            <td>{{ $item->pivot->nilai }}</td>
+                    @endforeach
+                    </tr>
+    
+                </tbody>
+            </table>
+        
 @endsection
