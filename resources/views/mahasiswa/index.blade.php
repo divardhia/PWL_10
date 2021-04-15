@@ -34,6 +34,7 @@
             <tr>
                 <th>Nim</th>
                 <th>Nama</th>
+                <th>Foto</th>
                 <th>Kelas</th>
                 <th>Jurusan</th>
                 <th width="280px">Action</th>
@@ -44,6 +45,7 @@
                 <tr>
                     <td>{{ $Mahasiswa->Nim }}</td>
                     <td>{{ $Mahasiswa->Nama }}</td>
+                    <td><img src="storage/{{$Mahasiswa->foto}}" width="100" height="100"></td>
                     <td>{{ $Mahasiswa->Kelas->nama_kelas }}</td>
                     <td>{{ $Mahasiswa->Jurusan }}</td>
                     <td>
